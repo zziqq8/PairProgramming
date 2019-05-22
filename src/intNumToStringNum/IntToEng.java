@@ -27,9 +27,11 @@ public class IntToEng {
 		int i=0;
 
 		for(int j=3;j>=1;j--) {
-			String str="";//stackにpushする文字列をしまうところ。for分の度に初期化される。
-			i=(int)n%1000;//下3桁の数字をiにしまう
-			if(i==0)break;
+			String str="";//stackにpushする文字列をしまうところ。for文の度に初期化される。
+			//if((int)i/1000==1) {str="One Thousand";}
+			i=(int)n%1000;//下3桁の数字をiにしまう 1Thousand,1Millionのときi=1になる
+			n=(int)n/1000;//今stackにpushした分の桁を削除する
+			if(i==0)continue;
 
 			if((int)i/100==1) {str="One Hundred";}//One hundredにならないよう”s”、ここだけ場合分け。
 			else if(i>100)str=pettyStrAdd(str,OneToTen[(i/100)-1]+" Hundreds");
@@ -45,7 +47,6 @@ public class IntToEng {
 			}
 
 			stack.push(pettyStrAdd(str,digit[3-j]));
-			n=(int)n/1000;//今stackにpushした分の桁を削除する
 		}
 		return stackAdd(stack);//stackの中身をpopして全て足し合わせたStringをreturnする。
 	}

@@ -51,4 +51,18 @@ public class test {
 		String actual = ite.translateEng(7531486);
 		assertThat(actual,is(expected));
 	}
+	@Test
+	public void 八桁の数() {
+		IntToEng ite = new IntToEng();
+		String expected = "Eight Millions Six Hundreds Fourty Two One Thousand Three Hundreds Fifty Seven";
+		String actual = ite.translateEng(86421357);
+		assertThat(actual,is(expected));
+	}
+	@Test
+	public void 九桁の数() {
+		IntToEng ite = new IntToEng();
+		String expected = "Ninety Six Millions Three Hundreds Twelve Four Thousand Five Hundreds Seventy One";
+		String actual = ite.translateEng(963124571);
+		assertThat(actual,is(expected));
+	}
 }
